@@ -20,6 +20,9 @@ public class Student extends Person {
     }
 
     public void addCourse(String courseCode) {
-
+        if (!courseCode.matches("^[A-Z]{3}\\d{3}$")) {
+            throw new IllegalArgumentException("Invalid course code! Example: CSE101");
+        }
+        courses.add(courseCode);
     }
 }
