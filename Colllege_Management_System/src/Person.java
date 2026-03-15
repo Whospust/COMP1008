@@ -2,7 +2,7 @@ public abstract class Person {
     private String name;
     private String id;
     private String email;
-
+    //TODO ADD COMMENTS EVERYWHERE
     public Person(String name, String id, String email) {
         if(!name.matches("^[A-Za-z ]+$")) {
             throw new IllegalArgumentException("Name can only contain letters and spaces");

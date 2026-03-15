@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
-
+//TODO ADD COMMENTS EVERYWHERE
 public class Student extends Person {
     private final ArrayList<String> courses;
     private String major;
@@ -27,13 +27,15 @@ public class Student extends Person {
 
     @Override
     public void getDetails() {
-        System.out.println("Student: " + getName() + "Student id: #" + getId());
+        System.out.println("Student name: " + getName() + "Student id: #" + getId());
         System.out.println("Study of field: " + major);
         if (!courses.isEmpty()) {
             System.out.println("Your course list:");
             for (String course : courses) {
                 System.out.println(course);
             }
+        } else {
+            System.out.println("No course selected yet:");
         }
     }
 
