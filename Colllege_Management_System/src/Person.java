@@ -1,9 +1,9 @@
 public abstract class Person {
     private String name;
-    private Long id;
+    private String id;
     private String email;
 
-    public Person(String name, Long id, String email) {
+    public Person(String name, String id, String email) {
         this.name = name;
         this.id = id;
         this.email = email;
@@ -14,22 +14,32 @@ public abstract class Person {
     }
 
     public void setName(String name) {
+        if(!name.matches("^[A-Za-z ]+$")) {
+            throw new IllegalArgumentException("Name can only contain letters and spaces");
+        }
         this.name = name;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
+        if(!id.matches("^S-\\d{4}$")) {
+            throw new IllegalArgumentException("Invalid Student ID! Format must be S-1234");
+        }
         this.id = id;
     }
 
     public String getEmail() {
+
         return email;
     }
 
     public void setEmail(String email) {
+        if (!email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
+            throw new IllegalArgumentException("Invalid email format!");
+        }
         this.email = email;
     }
 
