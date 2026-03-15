@@ -8,6 +8,9 @@ public class Student extends Person {
     public Student(String name, String id, String email, String major) {
         super(name, id, email);
         courses = new ArrayList<>();
+        if(!major.matches("^[A-Za-z ]+$")) {
+            throw new IllegalArgumentException("Invalid field of study! Example: Computer Science");
+        }
         this.major = major;
     }
 
@@ -24,7 +27,7 @@ public class Student extends Person {
 
     @Override
     public void getDetails() {
-        System.out.println("Hello, " + getName() + " #" + getId());
+        System.out.println("Student: " + getName() + "Student id: #" + getId());
         System.out.println("Study of field: " + major);
         if (!courses.isEmpty()) {
             System.out.println("Your course list:");
