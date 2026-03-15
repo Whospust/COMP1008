@@ -32,4 +32,6 @@ public abstract class Person {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public abstract void getDetails();
 }
