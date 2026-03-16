@@ -2,7 +2,6 @@ public abstract class Person {
     private String name;
     private String id;
     private String email;
-    //TODO ADD COMMENTS EVERYWHERE
     public Person(String name, String id, String email) {
         // regex validation for name field which approves only letters and spaces
         if(!name.matches("^[A-Za-z ]+$")) {
