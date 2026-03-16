@@ -4,23 +4,30 @@ public abstract class Person {
     private String email;
     //TODO ADD COMMENTS EVERYWHERE
     public Person(String name, String id, String email) {
+        // regex validation for name field which approves only letters and spaces
         if(!name.matches("^[A-Za-z ]+$")) {
             throw new IllegalArgumentException("Name can only contain letters and spaces");
         }
-        this.name = name;
+        // regex validation for id field which approves only specific format: S-1234
         if(!id.matches("^S-\\d{4}$")) {
             throw new IllegalArgumentException("Invalid Student ID! Format must be S-1234");
         }
-        this.id = id;
+        // regex validation for email field which approves only emails
         if (!email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
             throw new IllegalArgumentException("Invalid email format!");
         }
+        // if any part of validation has failed none of these fields below will be assigned
+        this.id = id;
+        this.name = name;
         this.email = email;
     }
 
+    // Standard getters and setters with regex validation
+    // validation is exactly the same as in constructor above for all fields
     public String getName() {
         return name;
     }
+
 
     public void setName(String name) {
         if(!name.matches("^[A-Za-z ]+$")) {
@@ -52,5 +59,6 @@ public abstract class Person {
         this.email = email;
     }
 
+    // abstract method for child future classes
     public abstract void getDetails();
 }
