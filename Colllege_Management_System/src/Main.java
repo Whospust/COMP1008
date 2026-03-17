@@ -56,4 +56,19 @@ public class Main {
         }
     }
 
+    // Methods which allow to find by studentId student or instructor
+    private static Student findStudentById(String id) {
+        for (Student s : studentList) {
+            if (s.getId().equals(id)) return s;
+        }
+        return null;
+    }
+
+    private static Instructor findInstructorById(String id) {
+        for (Instructor i : instructorList) {
+            if (i.getId().equals(id)) return i;
+        }
+        return null;
+    }
+
 }
