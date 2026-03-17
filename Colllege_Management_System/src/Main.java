@@ -9,4 +9,28 @@ public class Main {
 
     }
 
+
+    // Method which allows to add student
+    private static void addStudent() {
+        try {
+            System.out.print("Enter Student Name: ");
+            String name = scanner.nextLine();
+
+            System.out.print("Enter Student ID (S-1234): ");
+            String id = scanner.nextLine();
+
+            System.out.print("Enter Student Email: ");
+            String email = scanner.nextLine();
+
+            System.out.print("Enter Major: ");
+            String major = scanner.nextLine();
+
+            Student student = new Student(name, id, email, major);
+            studentList.add(student);
+            System.out.println("Student added successfully!");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error adding student: " + e.getMessage());
+        }
+    }
+
 }
