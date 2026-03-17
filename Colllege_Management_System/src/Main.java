@@ -2,11 +2,52 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    private static ArrayList<Student> studentList = new ArrayList<>();
-    private static ArrayList<Instructor> instructorList = new ArrayList<>();
-    private static Scanner scanner = new Scanner(System.in);
+    private static final ArrayList<Student> studentList = new ArrayList<>();
+    private static final ArrayList<Instructor> instructorList = new ArrayList<>();
+    private static final Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
+        boolean running = true;
 
+        while (running) {
+            System.out.println("\nStudent Management System");
+            System.out.println("1. Add Student");
+            System.out.println("2. Add Instructor");
+            System.out.println("3. Assign Course to Student");
+            System.out.println("4. Assign Course to Instructor");
+            System.out.println("5. Display All Students");
+            System.out.println("6. Display All Instructors");
+            System.out.println("7. Exit");
+            System.out.print("Choose an option: ");
+
+            String choice = scanner.nextLine();
+
+            switch (choice) {
+                case "1":
+                    addStudent();
+                    break;
+                case "2":
+                    addInstructor();
+                    break;
+                case "3":
+                    assignCourseToStudent();
+                    break;
+                case "4":
+                    assignCourseToInstructor();
+                    break;
+                case "5":
+                    displayStudents();
+                    break;
+                case "6":
+                    displayInstructors();
+                    break;
+                case "7":
+                    running = false;
+                    System.out.println("Exiting system. Goodbye!");
+                    break;
+                default:
+                    System.out.println("Invalid option. Try again.");
+            }
+        }
     }
 
 
@@ -91,6 +132,31 @@ public class Main {
             }
         } else {
             System.out.println("Instructor not found!");
+        }
+    }
+
+    private static void displayStudents() {
+        if (studentList.isEmpty()) {
+            System.out.println("No students in the system.");
+        } else {
+            System.out.println("\nStudent List");
+            for (Student s : studentList) {
+                s.getDetails();
+                System.out.println(" ");
+            }
+        }
+    }
+
+
+    private static void displayInstructors() {
+        if (instructorList.isEmpty()) {
+            System.out.println("No instructors in the system.");
+        } else {
+            System.out.println("\nInstructor List");
+            for (Instructor i : instructorList) {
+                i.getDetails();
+                System.out.println(" ");
+            }
         }
     }
 
