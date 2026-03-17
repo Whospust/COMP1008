@@ -33,4 +33,27 @@ public class Main {
         }
     }
 
+    // Method which allows to add instructor
+    private static void addInstructor() {
+        try {
+            System.out.print("Enter Instructor Name: ");
+            String name = scanner.nextLine();
+
+            System.out.print("Enter Instructor ID (S-1234): ");
+            String id = scanner.nextLine();
+
+            System.out.print("Enter Instructor Email: ");
+            String email = scanner.nextLine();
+
+            System.out.print("Enter Department: ");
+            String department = scanner.nextLine();
+
+            Instructor instructor = new Instructor(name, id, email, department);
+            instructorList.add(instructor);
+            System.out.println("Instructor added successfully!");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error adding instructor: " + e.getMessage());
+        }
+    }
+
 }
