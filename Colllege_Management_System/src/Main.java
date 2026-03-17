@@ -56,7 +56,49 @@ public class Main {
         }
     }
 
-    // Methods which allow to find by studentId student or instructor
+    private static void assignCourseToStudent() {
+        System.out.print("Enter Student ID: ");
+        String id = scanner.nextLine();
+        Student student = findStudentById(id);
+
+        if (student != null) {
+            System.out.print("Enter Course Code (e.g., CSE101): ");
+            String course = scanner.nextLine();
+            try {
+                student.addCourse(course);
+                System.out.println("Course assigned to student!");
+            } catch (IllegalArgumentException e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+        } else {
+            System.out.println("Student not found!");
+        }
+    }
+
+    private static void assignCourseToInstructor() {
+        System.out.print("Enter Instructor ID: ");
+        String id = scanner.nextLine();
+        Instructor instructor = findInstructorById(id);
+
+        if (instructor != null) {
+            System.out.print("Enter Course Code (e.g., CSE101): ");
+            String course = scanner.nextLine();
+            try {
+                instructor.addCourse(course);
+                System.out.println("Course assigned to instructor!");
+            } catch (IllegalArgumentException e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+        } else {
+            System.out.println("Instructor not found!");
+        }
+    }
+
+
+
+
+
+    // Methods which allow to find by id student or instructor
     private static Student findStudentById(String id) {
         for (Student s : studentList) {
             if (s.getId().equals(id)) return s;
