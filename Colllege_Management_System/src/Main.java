@@ -87,7 +87,6 @@ public class Main {
 
     private static void assignCourseToStudent() {
         System.out.print("Enter Student ID: ");
-        String id = scanner.nextLine();
         Student student = findStudentById();
 
         if (student != null) {
@@ -143,7 +142,7 @@ public class Main {
 
     private static void assignCourseToInstructor() {
         System.out.print("Enter Instructor ID: ");
-        String id = scanner.nextLine();
+
         Instructor instructor = findInstructorById();
 
         if (instructor != null) {
