@@ -13,34 +13,30 @@ public class Main {
             System.out.println("1. Add Student");
             System.out.println("2. Add Instructor");
             System.out.println("3. Assign Course to Student");
-            System.out.println("4. Assign Course to Instructor");
-            System.out.println("5. Display All Students");
-            System.out.println("6. Display All Instructors");
-            System.out.println("7. Exit");
+            System.out.println("4. Remove Course from Student");
+            System.out.println("5. Remove All Courses from Student");
+            System.out.println("6. Assign Course to Instructor");
+            System.out.println("7. Remove Course from Instructor");
+            System.out.println("8. Remove All Courses from Instructor");
+            System.out.println("9. Display All Students");
+            System.out.println("10. Display All Instructors");
+            System.out.println("11. Exit");
             System.out.print("Choose an option: ");
 
             String choice = scanner.nextLine();
 
             switch (choice) {
-                case "1":
-                    addStudent();
-                    break;
-                case "2":
-                    addInstructor();
-                    break;
-                case "3":
-                    assignCourseToStudent();
-                    break;
-                case "4":
-                    assignCourseToInstructor();
-                    break;
-                case "5":
-                    displayStudents();
-                    break;
-                case "6":
-                    displayInstructors();
-                    break;
-                case "7":
+                case "1": addStudent(); break;
+                case "2": addInstructor(); break;
+                case "3": assignCourseToStudent(); break;
+                case "4": removeCourseFromStudent(); break;
+                case "5": removeAllCoursesFromStudent(); break;
+                case "6": assignCourseToInstructor(); break;
+                case "7": removeCourseFromInstructor(); break;
+                case "8": removeAllCoursesFromInstructor(); break;
+                case "9": displayStudents(); break;
+                case "10": displayInstructors(); break;
+                case "11":
                     running = false;
                     System.out.println("Exiting system. Goodbye!");
                     break;
@@ -73,6 +69,40 @@ public class Main {
             System.out.println("Error adding student: " + e.getMessage());
         }
     }
+    private static void removeCourseFromStudent() {
+        Student student = findStudentById();
+        if (student != null) {
+            System.out.print("Enter Course Code to Remove: ");
+            String course = scanner.nextLine();
+            try {
+                student.RemoveCourse(course);
+                System.out.println("Course removed from student successfully!");
+            } catch (Exception e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+        }
+    }
+
+
+
+    private static void assignCourseToStudent() {
+        System.out.print("Enter Student ID: ");
+        String id = scanner.nextLine();
+        Student student = findStudentById();
+
+        if (student != null) {
+            System.out.print("Enter Course Code (e.g., CSE101): ");
+            String course = scanner.nextLine();
+            try {
+                student.addCourse(course);
+                System.out.println("Course assigned to student!");
+            } catch (IllegalArgumentException e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+        } else {
+            System.out.println("Student not found!");
+        }
+    }
 
     // Method which allows to add instructor
     private static void addInstructor() {
@@ -97,29 +127,24 @@ public class Main {
         }
     }
 
-    private static void assignCourseToStudent() {
-        System.out.print("Enter Student ID: ");
-        String id = scanner.nextLine();
-        Student student = findStudentById(id);
-
-        if (student != null) {
-            System.out.print("Enter Course Code (e.g., CSE101): ");
+    private static void removeCourseFromInstructor() {
+        Instructor instructor = findInstructorById();
+        if (instructor != null) {
+            System.out.print("Enter Course Code to Remove: ");
             String course = scanner.nextLine();
             try {
-                student.addCourse(course);
-                System.out.println("Course assigned to student!");
-            } catch (IllegalArgumentException e) {
+                instructor.RemoveCourse(course);
+                System.out.println("Course removed from instructor successfully!");
+            } catch (Exception e) {
                 System.out.println("Error: " + e.getMessage());
             }
-        } else {
-            System.out.println("Student not found!");
         }
     }
 
     private static void assignCourseToInstructor() {
         System.out.print("Enter Instructor ID: ");
         String id = scanner.nextLine();
-        Instructor instructor = findInstructorById(id);
+        Instructor instructor = findInstructorById();
 
         if (instructor != null) {
             System.out.print("Enter Course Code (e.g., CSE101): ");
@@ -132,6 +157,28 @@ public class Main {
             }
         } else {
             System.out.println("Instructor not found!");
+        }
+    }
+
+    private static void removeAllCoursesFromStudent() {
+        Student student = findStudentById();
+        if (student != null) {
+            try {
+                student.RemoveAllCourses();
+            } catch (Exception e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+        }
+    }
+
+    private static void removeAllCoursesFromInstructor() {
+        Instructor instructor = findInstructorById();
+        if (instructor != null) {
+            try {
+                instructor.RemoveAllCourses();
+            } catch (Exception e) {
+                System.out.println("Error: " + e.getMessage());
+            }
         }
     }
 
@@ -165,17 +212,23 @@ public class Main {
 
 
     // Methods which allow to find by id student or instructor
-    private static Student findStudentById(String id) {
+    private static Student findStudentById() {
+        System.out.print("Enter Student ID: ");
+        String id = scanner.nextLine();
         for (Student s : studentList) {
             if (s.getId().equals(id)) return s;
         }
+        System.out.println("Student not found!");
         return null;
     }
 
-    private static Instructor findInstructorById(String id) {
+    private static Instructor findInstructorById() {
+        System.out.print("Enter Instructor ID: ");
+        String id = scanner.nextLine();
         for (Instructor i : instructorList) {
             if (i.getId().equals(id)) return i;
         }
+        System.out.println("Instructor not found!");
         return null;
     }
 

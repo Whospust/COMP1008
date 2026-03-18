@@ -67,9 +67,11 @@ public class Instructor extends Person{
 
     // removes all courses
     public void RemoveAllCourses() {
-        for (String course : coursesTeaching) {
-            coursesTeaching.remove(course);
+        if (coursesTeaching.isEmpty()) {
+            System.out.println("No courses to remove!");
+            return;
         }
+        coursesTeaching.clear();
         System.out.println("You have successfully removed all courses!");
     }
 }
