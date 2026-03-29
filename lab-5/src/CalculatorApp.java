@@ -93,6 +93,22 @@ public class CalculatorApp extends Application {
             }
         });
 
+        multiplyBtn.setOnAction(e -> {
+            String input1 = userInput1.getText();
+            String input2 = userInput2.getText();
+            if(input1.isEmpty() || input2.isEmpty()) {
+                result.setText("Input cannot be empty");
+            } else {
+                try {
+                    int num1 = Integer.parseInt(input1);
+                    int num2 = Integer.parseInt(input2);
+                    result.setText(String.valueOf(num1 * num2));
+                } catch (NumberFormatException err) {
+                    result.setText("Input must contain only numbers!");
+                }
+            }
+        });
+
         // Step 7: Create scene and show stage
         Scene scene = new Scene(vbox, 300, 350);
         primaryStage.setScene(scene);
