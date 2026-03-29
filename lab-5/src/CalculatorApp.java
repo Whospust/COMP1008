@@ -25,12 +25,15 @@ public class CalculatorApp extends Application {
         // Step 3: Create Label for result
         Label result = new Label();
         // Step 4: HBox for buttons
-        HBox hbox = new HBox();
-        hbox.getChildren().addAll(addBtn,subtractBtn,multiplyBtn,divideBtn);
+        HBox buttonsHbox = new HBox();
+        buttonsHbox.getChildren().addAll(addBtn,subtractBtn,multiplyBtn,divideBtn);
 
+        // Step 4a: also created hbox for user input
+        HBox inputHbox = new HBox(20);
+        inputHbox.getChildren().addAll(userInput1, userInput2);
         // Step 5: VBox main layout
-        VBox vbox = new VBox();
-        vbox.getChildren().addAll(userInput1,userInput2,hbox,result);
+        VBox vbox = new VBox(20);
+        vbox.getChildren().addAll(inputHbox,buttonsHbox,result);
         // Step 6: Event handling for buttons
 
         // Step 7: Create scene and show stage
