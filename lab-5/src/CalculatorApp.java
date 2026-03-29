@@ -30,10 +30,13 @@ public class CalculatorApp extends Application {
 
         // Step 5: VBox main layout
         VBox vbox = new VBox();
-        vbox.getChildren().addAll(userInput1,userInput2,result);
+        vbox.getChildren().addAll(userInput1,userInput2,hbox,result);
         // Step 6: Event handling for buttons
 
         // Step 7: Create scene and show stage
+        Scene scene = new Scene(vbox, 350, 350);
+        primaryStage.setScene(scene);
+        primaryStage.show();
 
     }
 
