@@ -18,8 +18,10 @@ public class CalculatorApp extends Application {
         TextField userInput2 = new TextField();
 
         // Step 2: Create Buttons for operations
-
-
+        Button addBtn = new Button("+");
+        Button subtractBtn = new Button("-");
+        Button multiplyBtn = new Button("*");
+        Button divideBtn = new Button("/");
         // Step 3: Create Label for result
 
         // Step 4: HBox for buttons
