@@ -29,7 +29,8 @@ public class CalculatorApp extends Application {
         hbox.getChildren().addAll(addBtn,subtractBtn,multiplyBtn,divideBtn);
 
         // Step 5: VBox main layout
-
+        VBox vbox = new VBox();
+        vbox.getChildren().addAll(userInput1,userInput2,result);
         // Step 6: Event handling for buttons
 
         // Step 7: Create scene and show stage
