@@ -48,8 +48,8 @@ public class CalculatorApp extends Application {
                 result.setText("Input cannot be empty");
             } else {
                 try {
-                    int num1 = Integer.parseInt(input1);
-                    int num2 = Integer.parseInt(input2);
+                    double num1 = Double.parseDouble(input1);
+                    double num2 = Double.parseDouble(input2);
                     result.setText(String.valueOf(num1 + num2));
                 } catch (NumberFormatException err) {
                     result.setText("Input must contain only numbers!");
@@ -64,8 +64,8 @@ public class CalculatorApp extends Application {
                 result.setText("Input cannot be empty");
             } else {
                 try {
-                    int num1 = Integer.parseInt(input1);
-                    int num2 = Integer.parseInt(input2);
+                    double num1 = Double.parseDouble(input1);
+                    double num2 = Double.parseDouble(input2);
                     result.setText(String.valueOf(num1 - num2));
                 } catch (NumberFormatException err) {
                     result.setText("Input must contain only numbers!");
@@ -80,8 +80,8 @@ public class CalculatorApp extends Application {
                 result.setText("Input cannot be empty");
             } else {
                 try {
-                    int num1 = Integer.parseInt(input1);
-                    int num2 = Integer.parseInt(input2);
+                    double num1 = Double.parseDouble(input1);
+                    double num2 = Double.parseDouble(input2);
                     if(num2 != 0) {
                         result.setText(String.valueOf(num1 / num2));
                     } else {
@@ -100,8 +100,8 @@ public class CalculatorApp extends Application {
                 result.setText("Input cannot be empty");
             } else {
                 try {
-                    int num1 = Integer.parseInt(input1);
-                    int num2 = Integer.parseInt(input2);
+                    double num1 = Double.parseDouble(input1);
+                    double num2 = Double.parseDouble(input2);
                     result.setText(String.valueOf(num1 * num2));
                 } catch (NumberFormatException err) {
                     result.setText("Input must contain only numbers!");
