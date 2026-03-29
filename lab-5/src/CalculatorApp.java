@@ -23,7 +23,7 @@ public class CalculatorApp extends Application {
         Button multiplyBtn = new Button("*");
         Button divideBtn = new Button("/");
         // Step 3: Create Label for result
-
+        Label result = new Label();
         // Step 4: HBox for buttons
 
         // Step 5: VBox main layout
